@@ -11,7 +11,8 @@ include_directories(${OpenCV_INCLUDE_DIRS})
 
 include_directories(${PROJECT_SOURCE_DIR}/source/)
 
-add_subdirectory(${PROJECT_SOURCE_DIR}/source)
+add_subdirectory(${PROJECT_SOURCE_DIR}/source/)
+add_subdirectory(${PROJECT_SOURCE_DIR}/tests/)
 
 add_executable(TransformRot main.cpp)
 target_link_libraries(TransformRot ${OpenCV_LIBS} sparkpose)
