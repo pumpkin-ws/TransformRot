@@ -31,11 +31,24 @@ namespace sparkpose {
 
     bool rotVec2Matrix(const Eigen::Vector3f& rotVec, Eigen::Matrix3f& rotMat, Eigen::AngleAxisf& aa, Eigen::Quaternionf& q) {
         /* The norm of the rotation vector is the rotation angle, the unit vector is the rotation axis */
-        aa.angle() = rotVec.norm();
-        aa.axis() = rotVec.normalized();
-        rotMat = aa.matrix();
-        q = aa;
+        try{
+            aa.angle() = rotVec.norm();
+            aa.axis() = rotVec.normalized();
+            rotMat = aa.matrix();
+            q = aa;
+            return true;
+        } catch (std::exception& e) {
+            std::cout << e.what() << std::endl;
+            return false;
+        }
+    };
 
+    bool euler2RotVec(const Eigen::Vector3f& euler, std::string rot_order, Eigen::Vector3f& rot_vec) {
+        if (rot_order.size() != 3) {
+            printf("INVALID VALUE FOR ROTATION ORDER.\n");
+            return false;
+        }
+        return true;
     };
 
     
